@@ -192,9 +192,9 @@ require('lazy').setup({
   {
     -- Theme inspired by Atom
     'navarasu/onedark.nvim',
-    priority = 1000,
+    --priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'onedark'
+    --  vim.cmd.colorscheme 'onedark'
     end,
   },
 
@@ -205,7 +205,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'onedark',
+        theme = 'ayu_dark',
         component_separators = '|',
         section_separators = '',
       },
@@ -266,7 +266,9 @@ require('lazy').setup({
   --    Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
+  -- Set 'leader',L to open lazy.nvim
+  vim.keymap.set('n', '<leader>L', ':Lazy<CR>', {}),
 }, {})
 
 -- [[ Setting options ]]
@@ -274,7 +276,7 @@ require('lazy').setup({
 -- NOTE: You can change these options as you wish!
 
 -- Set highlight on search
-vim.o.hlsearch = false
+vim.o.hlsearch = true
 
 -- Make line numbers default
 vim.wo.number = true
@@ -661,6 +663,9 @@ cmp.setup {
     { name = 'path' },
   },
 }
+
+-- Additonal personal options in lua directory
+require("options")
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
